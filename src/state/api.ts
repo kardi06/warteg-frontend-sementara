@@ -192,10 +192,14 @@ export const api = createApi({
             invalidatesTags: ["BahanBaku"],
         }),
         /* BELANJA ENDPOINTS */
-        getBelanja: build.query<Belanja[], { search?: string; tanggal?: string }>({
-            query: ({ search, tanggal }) => ({
+        getBelanja: build.query<Belanja[], { search?: string; startDate?: string; endDate?: string }>({
+            query: ({ search, startDate, endDate }) => ({
                 url: "/belanja",
-                params: { search, tanggal },
+                params: {
+                    ...(search ? { search } : {}),
+                    ...(startDate ? { startDate } : {}),
+                    ...(endDate ? { endDate } : {}),
+                },
             }),
             providesTags: ["Belanja"],
         }),

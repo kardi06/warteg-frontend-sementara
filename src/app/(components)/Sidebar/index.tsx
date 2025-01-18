@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '@/app/redux';
 import { setIsSideBarCollapsed } from '@/state';
 import { 
     BadgeDollarSign,
+    Calculator,
     Clipboard, 
     Layout, 
     ListCheck, 
@@ -10,6 +11,7 @@ import {
     Menu, 
     Salad, 
     ShoppingBag,
+    ShoppingBasket,
     Utensils,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -98,12 +100,24 @@ const Sidebar = () => {
                         label="Produk" 
                         isCollapsed={false} />
             </SideBarDropDown>
-            <SideBarLink
-                href='/belanja'
-                icon={ShoppingBag}
-                label='Belanja'
+            <SideBarDropDown 
+                icon={ShoppingBag} 
+                label="Belanja" 
                 isCollapsed={isSideBarCollapsed}
-            />
+                href="/belanja"
+            >
+                    <SideBarLink
+                        href='/belanja/harian'
+                        icon={ShoppingBasket}
+                        label='Belanja Harian'
+                        isCollapsed={isSideBarCollapsed}
+                    />
+                    <SideBarLink 
+                        href="/belanja/data-belanja" 
+                        icon={Calculator}
+                        label="Data Belanja" 
+                        isCollapsed={false} />
+            </SideBarDropDown>
             <SideBarLink
                 href='/penjualan'
                 icon={BadgeDollarSign}

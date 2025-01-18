@@ -169,7 +169,7 @@ const ProductModal = ({
                 onChange={handleCategoryChange}
                 value={categoryOptions.find(
                 (option) => option.value === formData.categoryId
-                )}
+                ) || null}
             />
 
             {/* Upload Gambar */}

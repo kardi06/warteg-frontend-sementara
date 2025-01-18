@@ -174,47 +174,49 @@ const Belanja = () => {
             </div>
 
             <div className="bg-white shadow-lg p-6 rounded-lg">
-            <h2 className="text-lg font-semibold mb-4">Daftar Belanja</h2>
-            <table className="w-full border-collapse border">
-                <thead>
-                    <tr className="bg-gray-100">
-                        <th className="border px-4 py-2">ID Bahan Baku</th>
-                        <th className="border px-4 py-2">Nama Bahan Baku</th>
-                        <th className="border px-4 py-2">Tanggal</th>
-                        <th className="border px-4 py-2">Harga Satuan</th>
-                        <th className="border px-4 py-2">Quantity</th>
-                        <th className="border px-4 py-2">Harga Total</th>
-                        <th className="border px-4 py-2">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {temporaryData.map((item, index) => (
-                    <tr key={index}>
-                        <td className="border px-4 py-2">{item.bahanBakuId}</td>
-                        <td className="border px-4 py-2">{item.namaBahanBaku}</td>
-                        <td className="border px-4 py-2">{item.tanggal.toISOString().split("T")[0]}</td>
-                        <td className="border px-4 py-2">Rp {item.hargaSatuan.toLocaleString("id-ID")}</td>
-                        <td className="border px-4 py-2">{item.qty}</td>
-                        <td className="border px-4 py-2">Rp {item.hargaTotal.toLocaleString("id-ID")}</td>
-                        <td className="border px-4 py-2">
-                        <button
-                            onClick={() => handleDelete(index)}
-                            className="text-red-500 hover:text-red-700"
-                        >
-                            <Trash className="w-5 h-5" />
-                        </button>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
-                <tfoot>
-                    <tr className="bg-gray-100 font-semibold">
-                    <td colSpan={5} className="border px-4 py-2 text-right">Total:</td>
-                    <td className="border px-4 py-2">Rp {totalHarga.toLocaleString("id-ID")}</td>
-                    <td className="border px-4 py-2"></td>
-                    </tr>
-                </tfoot>
-            </table>
+                <h2 className="text-lg font-semibold mb-4">Daftar Belanja</h2>
+                <div className="overflow-x-auto table-auto min-w-full">
+                    <table className="w-full border-collapse border">
+                        <thead>
+                            <tr className="bg-gray-100">
+                                <th className="border px-4 py-2">ID Bahan Baku</th>
+                                <th className="border px-4 py-2">Nama Bahan Baku</th>
+                                <th className="border px-4 py-2">Tanggal</th>
+                                <th className="border px-4 py-2">Harga Satuan</th>
+                                <th className="border px-4 py-2">Quantity</th>
+                                <th className="border px-4 py-2">Harga Total</th>
+                                <th className="border px-4 py-2">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {temporaryData.map((item, index) => (
+                            <tr key={index}>
+                                <td className="border px-4 py-2">{item.bahanBakuId}</td>
+                                <td className="border px-4 py-2">{item.namaBahanBaku}</td>
+                                <td className="border px-4 py-2">{item.tanggal.toISOString().split("T")[0]}</td>
+                                <td className="border px-4 py-2">Rp {item.hargaSatuan.toLocaleString("id-ID")}</td>
+                                <td className="border px-4 py-2">{item.qty}</td>
+                                <td className="border px-4 py-2">Rp {item.hargaTotal.toLocaleString("id-ID")}</td>
+                                <td className="border px-4 py-2">
+                                <button
+                                    onClick={() => handleDelete(index)}
+                                    className="text-red-500 hover:text-red-700"
+                                >
+                                    <Trash className="w-5 h-5" />
+                                </button>
+                                </td>
+                            </tr>
+                            ))}
+                        </tbody>
+                        <tfoot>
+                            <tr className="bg-gray-100 font-semibold">
+                            <td colSpan={5} className="border px-4 py-2 text-right">Total:</td>
+                            <td className="border px-4 py-2">Rp {totalHarga.toLocaleString("id-ID")}</td>
+                            <td className="border px-4 py-2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
                 <button
                     className="flex items-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4"
                     onClick={handleSave}
